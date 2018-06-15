@@ -3,9 +3,11 @@
 This bot was created with the objective of prototyping bots for Flash Sales.
 
 Demo Video with Account Kit login:
+
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/DfI0GzfXmqA/0.jpg)](https://youtu.be/DfI0GzfXmqA)
 
 Demo Video with Account Linking login:
+
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/l-hRnBsPLW8/0.jpg)](https://youtu.be/l-hRnBsPLW8)
 
 

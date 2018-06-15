@@ -2,7 +2,7 @@
 
 This bot was created with the objective of prototyping bots for Flash Sales.
 
-Demo Video with Account Kit login:
+Demo Video for this simple bot:
 
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/2IHjnYrdCqs/0.jpg)](https://www.youtube.com/watch?v=2IHjnYrdCqs)
 

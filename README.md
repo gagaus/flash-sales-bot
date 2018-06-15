@@ -3,10 +3,12 @@
 This bot was created with the objective of prototyping bots for Flash Sales.
 
 Demo Video with Account Kit login:
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/DfI0GzfXmqA/0.jpg)](https://youtu.be/DfI0GzfXmqA)
+
+<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F1654800791240274%2Fvideos%2F1687113798008973%2F&width=500&show_text=false&appId=1922806181342674&height=893" width="500" height="893" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" allowFullScreen="true"></iframe>
 
 Demo Video with Account Linking login:
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/l-hRnBsPLW8/0.jpg)](https://youtu.be/l-hRnBsPLW8)
+
+<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F1654800791240274%2Fvideos%2F1687115274675492%2F&width=500&show_text=false&appId=1922806181342674&height=893" width="500" height="893" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" allowFullScreen="true"></iframe>
 
 ## Requirements
 

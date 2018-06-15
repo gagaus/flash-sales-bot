@@ -1,23 +1,69 @@
-Flash Sales Bot
-=================
+# Flash Sales Bot
 
 This bot was created with the objective of prototyping bots for Flash Sales.
 
-To reproduce, configure your app on [Facebook Developers](http://developers.facebook.com/apps) with the following permissions:
-  * messages,
-  * messaging_postbacks
-  * messaging_referrals
+Demo Video with Account Kit login:
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/2IHjnYrdCqs/0.jpg)](https://www.youtube.com/watch?v=2IHjnYrdCqs)
+
+## Requirements
+
+  * Admin access to a [Facebook Page](https://www.facebook.com/bookmarks/pages)
+  * A [Facebook App](http://developers.facebook.com/apps)
+  * [Node.js](https://nodejs.org/en/)
+
+## Setup
+
+To build your own bot from scratch (or with a little help), try the [Messenger Platform Quick Start Tutorial](https://developers.facebook.com/docs/messenger-platform/getting-started/quick-start).
+
+Otherwise, to run this bot, configure your app on [Facebook Developers](http://developers.facebook.com/apps) with the following permissions:
+  * messages
 
 After associating your page with the webhook, run
 
 `npm install`
 
-to initit the setup. To run the bot server, run
+to install required Node packages.
+Start the server running
 
 `node server.js`
 
-Fill the config.js file with your page access token and the product data.
+Fill the `config.js` file with your [Page Access Token](https://developers.facebook.com/docs/pages/access-tokens).
 
-Create an ad on Facebook with the messaging objective and configure one quick reply with the `gen_coupon` payload.
+For initial tests or development, you can install and use [Local Tunnel](https://localtunnel.github.io/www/).
+With your node server up, run
 
-And you are done :D
+`lt --port 65172`
+
+Use the domain provided by Local Tunnel to replace `DOMAIN` in `backend_config.js` and in `product/payment_test/frontend_config.js`, and restart your node server. [Setup your webhook](https://developers.facebook.com/docs/messenger-platform/getting-started/app-setup) with:
+
+`<lt_domain> + /webhook`
+
+`VERIFICATION_TOKEN` is also in `server.js` with default value 'psa_bot'.
+
+Ex.:
+
+![alt text](https://github.com/Gagaus/flash-sales-bot/blob/master/readme_files/webhook_setup.png "Webhook Setup")
+
+## Optional
+
+#### Get Started Button
+
+Setup [Get Started Button](https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api/get-started-button) with
+
+```
+curl -X POST -H "Content-Type: application/json" -d '{
+  "get_started": {"payload": "open_thread"}
+}' "https://graph.facebook.com/v2.9/me/messenger_profile?access_token=<PAGE_ACCESS_TOKEN>
+```
+
+## Cheatsheet
+
+Easiest way to get a Page Access Token is:
+
+1. Go to [Graph Explorer](https://developers.facebook.com/tools/explorer/)
+2. Get an User Access Token with `manage_pages`
+3. Select the Page you want on the drop down.
+4. Copy the token from the Access Token field.
+
+To see token permissions, expiration date, etc, use [Access Token Debugger](https://developers.facebook.com/tools/debug/accesstoken).

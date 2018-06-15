@@ -7,7 +7,7 @@ const APP_ID = '';
 const APP_SECRET = '';
 const VERFICATION_TOKEN = 'psa_bot'
 // TODO get real productId from ad_id
-const PRODUCT_ID = 1662761400511515;
+const PRODUCT_ID = ;
 const BASE_GRAPH_API_URL = 'https://graph.facebook.com/v2.12/';
 const ME_ENDPOINT_BASE_URL = 'https://graph.facebook.com/v2.9/me';
 // your messenger webhook domain

@@ -1,0 +1,69 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0" />
+    <title>Login</title>
+    <style type="text/css">
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+<script>
+    const config = require('../config');
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'Messenger'));
+    window.extAsyncInit = () => {
+        MessengerExtensions.getSupportedFeatures(function success(result) {
+            let features = result.supported_features;
+            if (features.includes("context")) {
+                MessengerExtensions.getContext(config.APP_ID,
+                    function success(thread_context) {
+                        // success
+                        document.getElementById("psid").value = thread_context.psid;
+                    },
+                    function error(err) {
+                        // error
+                        console.log(err);
+                    }
+                );
+            }
+        }, function error(err) {
+            // error retrieving supported features
+            console.log(err);
+        });
+        document.getElementById('submitButton').addEventListener('click', () => {
+            MessengerExtensions.requestCloseBrowser(function success() {
+                console.log("Webview closing");
+            }, function error(err) {
+                console.log(err);
+            });
+        });
+    };
+</script>
+
+<div style="text-align:center">
+<h1> Thank you for your purchase </h1>
+<form action="/payment_postback" method="get">
+    <input type="hidden" name="psid" id="psid">
+    <input type="hidden" name="status" value="success" id="psid">
+    <input type="submit" value="Close this window" class="button" id="submitButton">
+</form>
+</body>
+</html>

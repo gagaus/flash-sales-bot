@@ -1,0 +1,85 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Web Checkout</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <script>
+      (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'Messenger'));
+     
+      window.extAsyncInit = function() {
+        MessengerExtensions.getContext(577511839314895, 
+          function success(thread_context){
+            window.psid = thread_context.psid;
+          },
+          function error(err){
+            // error
+          }
+        );
+      };
+      
+    </script>
+    
+    <!-- BEGIN - Credit Card Form -->
+    <form method="post" action="/pay">
+        <div id="myDropIn"></div>
+        <br>
+        <input class="btn btn-primary btn-lg btn-block" type="submit" value="Order Now!">
+    </form>
+    <!-- END - Credit Card Form -->
+    
+    <!-- jQuery -->
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    
+    <!-- BEGIN BT Client Initialization -->
+    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+    <script>
+        $.get('/get_token', function (response) {
+            var token = response.clientToken;
+            
+            braintree.setup(token, 'dropin', {
+                container: "myDropIn",
+                onPaymentMethodReceived: function (obj) {
+                  var xhr = new XMLHttpRequest();
+                  xhr.open("POST", '/pay', true);
+                  xhr.setRequestHeader('Content-Type', 'application/json');
+                  xhr.send(JSON.stringify({
+                    psid: window.psid
+                  }));
+
+                  MessengerExtensions.requestCloseBrowser();
+                }
+            });
+        });
+    </script>
+    <!-- END BT Client Initialization -->
+
+  </body>
+</html>

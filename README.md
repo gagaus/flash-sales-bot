@@ -37,7 +37,7 @@ Start the server running
 
 `node server.js`
 
-Fill the `backend_config.js` file with your [Page Access Token](https://developers.facebook.com/docs/pages/access-tokens).
+Fill the `backend_config.js` file with your [Page Access Token](https://developers.facebook.com/docs/pages/access-tokens), and a `VERIFICATION_TOKEN` with a non-guessable string.
 
 For initial tests or development, you can install and use [Local Tunnel](https://localtunnel.github.io/www/).
 With your node server up, run
@@ -48,7 +48,7 @@ Use the domain provided by Local Tunnel to replace `DOMAIN` in `backend_config.j
 
 `<lt_domain> + /webhook`
 
-`VERIFICATION_TOKEN` is also in `backend_config.js` with default value 'psa_bot'.
+Input the same `VERIFICATION_TOKEN` from your `backend_config.js`.
 
 Ex.:
 
@@ -61,6 +61,10 @@ Ex.:
 ![alt text](https://github.com/Gagaus/flash_sales_bot/blob/master/readme_files/akit_setup.png "Account Kit Setup")
 
 ## Optional
+
+### Product Catalog API
+
+In order to use a product from your [Dynamic Ads product catalog](https://developers.facebook.com/docs/marketing-api/dynamic-product-ads/product-catalog/), provide an User Access Token with `business_management` permission from an advertiser/admin of a product catalog. In `backend_config.js`, fill `USER_ACCESS_TOKEN` and `PRODUCT_ID`.
 
 #### Get Started Button
 

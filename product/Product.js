@@ -5,13 +5,23 @@ const MessengerHelper = require('../MessengerHelper');
 const UserConfig = require('../UserConfig');
 const config = require('../backend_config');
 
-exports.consumeProductInfo = function(psid) {
-  // split productId from url
-  const productId = config.PRODUCT_ID;
+const DEFAULT_PRODUCT = {
+  name: 'Dog Food',
+  availability: 'in stock',
+  currency: 'BRL',
+  price: '1234.56',
+  image_url: config.DOG_FOOD_IMAGE_URL,
+};
 
-  // save to DB
+exports.consumeProductInfo = function(psid) {
+  const productId = config.PRODUCT_ID;
   DB.setProductIdForUser(psid, productId);
-  CatalogAPI.fetchProduct(productId, psid, onFetchProductCallback);
+
+  if (productId == 0) {
+    onFetchProductCallback(DEFAULT_PRODUCT, psid);
+  } else {
+    CatalogAPI.fetchProduct(productId, psid, onFetchProductCallback);
+  }
 }
 
 function onFetchProductCallback(product, psid) {

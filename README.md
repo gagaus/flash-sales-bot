@@ -62,7 +62,7 @@ Ex.:
 
 ## Optional
 
-### Product Catalog API
+#### Product Catalog API
 
 In order to use a product from your [Dynamic Ads product catalog](https://developers.facebook.com/docs/marketing-api/dynamic-product-ads/product-catalog/), provide an User Access Token with `business_management` permission from an advertiser/admin of a product catalog. In `backend_config.js`, fill `USER_ACCESS_TOKEN` and `PRODUCT_ID`.
 
